@@ -5,3 +5,9 @@
 canvas {
     border: 1px solid salmon;
 }
+
+
+.gallery-container {
+    display: grid;
+    background-color: lightblue;
+}

@@ -13,15 +13,18 @@
         <h1>Meme Generator</h1>
     </header>
 
-    <section class="main-gallery"></section>
+    <section class="gallery-container">
+        <div class="gallery">X</div>
+    </section>
     <section class="editor">
         <div class="canvas-container">
             <canvas width="300" height="300"></canvas>
             <input class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()"/>
         </div>
     </section>
-<!-- <img src="img/5.jpg" alt="" hidden> -->
+
     <script src="js/memeService.js"></script>
+    <script src="js/gallerController.js"></script>
     <script src="js/memeController.js"></script>
 </body>
 

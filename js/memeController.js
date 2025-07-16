@@ -9,15 +9,16 @@ function onInit() {
     renderMeme()
 }
 
+
 function renderMeme() {
     const elMeme = getMeme()
     const { selectedImgId, selectedLineIdx, lines } = elMeme
 
     var elImg = new Image()
     elImg.src = gImgs[selectedImgId].url
-    
+
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
-    
+
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderText(lines[selectedLineIdx])
@@ -26,8 +27,7 @@ function renderMeme() {
 
 
 function renderText({ color, size, txt }, lineIdx) {
-    const elTextInput = document.querySelector('.canvas-text')
-    const text = txt || elTextInput 
+    const text = setLineTxt()
 
     gCtx.lineWidth = 1
     gCtx.strokeStyle = color

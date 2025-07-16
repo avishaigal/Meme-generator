@@ -2,9 +2,6 @@
 
 var gElCanvas
 var gCtx
-var gMeme
-
-// memeController
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
@@ -13,25 +10,31 @@ function onInit() {
 }
 
 function renderMeme() {
-    const elImg = document.querySelector('img')
+    const elMeme = getMeme()
+    const { selectedImgId, selectedLineIdx, lines } = elMeme
+
+    var elImg = new Image()
+    elImg.src = gImgs[selectedImgId].url
+    
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    
+    elImg.onload = () => {
+        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        renderText(lines[selectedLineIdx])
+    }
+}
 
 
-    // textbox
+function renderText({ color, size, txt }, lineIdx) {
     const elTextInput = document.querySelector('.canvas-text')
-    const text = elTextInput.value || 'Text Box'
+    const text = txt || elTextInput 
 
     gCtx.lineWidth = 1
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'black'
-    gCtx.font = '40px Arial'
+    gCtx.strokeStyle = color
+    gCtx.fillStyle = color
+    gCtx.font = size
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
     gCtx.fillText(text, 150, 50)
     gCtx.strokeText(text, 150, 50)
 }
-
-
-// memeService
-

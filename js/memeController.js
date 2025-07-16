@@ -38,3 +38,9 @@ function renderText({ color, size, txt }, lineIdx) {
     gCtx.fillText(text, 150, 50)
     gCtx.strokeText(text, 150, 50)
 }
+
+
+function onShowGallery() {
+     document.querySelector('.gallery').classList.remove('hide')
+    document.querySelector('.canvas-container').classList.add('hide')
+}

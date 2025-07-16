@@ -11,3 +11,8 @@ canvas {
     display: grid;
     background-color: lightblue;
 }
+
+
+.hide {
+    display: none;
+}

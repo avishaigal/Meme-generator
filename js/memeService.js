@@ -27,3 +27,7 @@ function setLineTxt() {
     gMeme.txt = document.querySelector('.canvas-text').value
     return gMeme.txt
 }
+
+function setImg(imgIdx) {
+    gMeme.selectedImgId = imgIdx - 1
+}

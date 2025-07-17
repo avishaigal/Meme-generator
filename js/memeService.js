@@ -10,24 +10,70 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Enter Text 1',
             size: 20,
-            color: 'red'
+            color: 'black',
+            offsetx: 150,
+            offsety: 50,
+            isActive: true,
+        },
+        {
+            txt: 'Enter Text 2',
+            size: 20,
+            color: 'black',
+            offsetx: 150,
+            offsety: 250,
+            isActive: false,
         }
     ]
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
+
 function getMeme() {
     return gMeme
 }
 
+
 function setLineTxt() {
-    gMeme.txt = document.querySelector('.canvas-text').value
-    return gMeme.txt
+    const editText = document.querySelector('.canvas-text').value
+    console.log(editText);
+
+    return editText
 }
+// function setLineTxt({txt}) {
+//     document.querySelector('.canvas-text').value
+//     console.log(txt);
+//     // gMeme.lines[lineIdx].txt = document.querySelector('.canvas-text').value
+//     // console.log(gMeme.lines[lineIdx].txt);
+//     // console.log(gMeme);
+
+    // return txt
+// }
+
 
 function setImg(imgIdx) {
     gMeme.selectedImgId = imgIdx - 1
+}
+
+
+function setColor(color) {
+    gMeme.lines[0].color = color
+    renderText(gMeme.lines[0])
+}
+
+
+function changeTextSize(sign) {
+    var textSize = gMeme.lines[0].size
+
+    sign === '+' ? textSize++ : textSize--
+    gMeme.lines[0].size = textSize
+    renderText(gMeme.lines[0])
+    return textSize
+}
+
+
+function createLines() {
+    gMeme.push
 }

@@ -2,6 +2,7 @@
 
 renderGallery()
 
+
 function renderGallery() {
     const elGallery = document.querySelector('.gallery')
     var strHTML = ''
@@ -13,6 +14,7 @@ function renderGallery() {
 
     elGallery.innerHTML = strHTML.join('')
 }
+
 
 function onImgSelect(elImgIdx) {
     document.querySelector('.gallery').classList.add('hide')

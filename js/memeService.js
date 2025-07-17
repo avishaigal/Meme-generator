@@ -10,25 +10,27 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
+            id: 1,
             txt: 'Enter Text 1',
             size: 20,
             color: 'black',
             offsetx: 150,
             offsety: 50,
-            isActive: true,
         },
         {
+            id: 2,
             txt: 'Enter Text 2',
             size: 20,
             color: 'black',
             offsetx: 150,
             offsety: 250,
-            isActive: false,
         }
     ]
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+var gTextOffset = 20
+var gTextInput = gMeme.lines[0].txt
 
 
 function getMeme() {
@@ -37,20 +39,11 @@ function getMeme() {
 
 
 function setLineTxt() {
-    const editText = document.querySelector('.canvas-text').value
-    console.log(editText);
+    var elInput = document.querySelector('.canvas-text')
 
-    return editText
+    gMeme.lines[gMeme.selectedLineIdx].txt = elInput.value
+    gTextInput = gMeme.lines[gMeme.selectedLineIdx].txt
 }
-// function setLineTxt({txt}) {
-//     document.querySelector('.canvas-text').value
-//     console.log(txt);
-//     // gMeme.lines[lineIdx].txt = document.querySelector('.canvas-text').value
-//     // console.log(gMeme.lines[lineIdx].txt);
-//     // console.log(gMeme);
-
-    // return txt
-// }
 
 
 function setImg(imgIdx) {
@@ -74,6 +67,31 @@ function changeTextSize(sign) {
 }
 
 
-function createLines() {
-    gMeme.push
+function addLine() {
+    const linesCount = gMeme.lines.length + 1
+    const linesId = gMeme.lines.length + 1
+
+    var textOffset = gTextOffset
+
+    const newLine = {
+        id: linesId,
+        txt: `Enter Text ${linesCount}`,
+        size: 20,
+        color: 'black',
+        offsetx: (130 + textOffset),
+        offsety: (130 + textOffset),
+    }
+    gMeme.lines.push(newLine)
+    console.log(gMeme.lines);
+    gTextOffset = gTextOffset + 15
+}
+
+
+function switchLine() {
+    var elInput = document.querySelector('.canvas-text')
+
+    if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx++
+
+    elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
 }

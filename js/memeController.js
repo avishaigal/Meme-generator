@@ -27,8 +27,50 @@ function renderMeme() {
 }
 
 
+// function renderText() {
+//     setLineTxt()
+//     let textBox = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt);
+//     let { width, fontBoundingBoxAscent } = textBox
+
+//     // console.log(textBox);
+//     // console.log(width);
+//     // console.log(actualBoundingBoxAscent);
+//     console.log(gMeme.selectedLineIdx);
+
+
+//     gMeme.lines.forEach(idx => {
+//         const { id, txt, size, color, offsetx, offsety } = idx
+//         console.log('idx', idx);
+
+//         var padding = 10
+
+//         gCtx.lineWidth = 1
+//         gCtx.strokeStyle = 'black'
+//         gCtx.fillStyle = color
+//         gCtx.font = size + 'px fantasy'
+//         gCtx.textAlign = 'center'
+//         gCtx.textBaseline = 'middle'
+//         gCtx.fillText(txt, offsetx, offsety)
+//         gCtx.strokeText(txt, offsetx, offsety)
+
+//         var rectXStart = offsetx - width
+//         var rectYStart = offsety - (fontBoundingBoxAscent * 2)
+//         var rectXEnd = width + (padding * 6)
+//         var rectYEnd = fontBoundingBoxAscent + (padding * 2.5)
+//         console.log('x start end ', rectXStart, rectXEnd);
+//         console.log('y start end ', rectYStart, rectYEnd);
+
+//         // if (id === gMeme.selectedLineIdx) gCtx.strokeRect((offsetx), (offsety), (offsetx + width), (offsety - fontBoundingBoxAscent))   
+//         if (id === gMeme.selectedLineIdx) gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
+//         gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
+//     })
+// }
+
 function renderText() {
     setLineTxt()
+    
+
+    console.log(gMeme.selectedLineIdx);
 
 
     gMeme.lines.forEach(idx => {
@@ -42,10 +84,9 @@ function renderText() {
         gCtx.textBaseline = 'middle'
         gCtx.fillText(txt, offsetx, offsety)
         gCtx.strokeText(txt, offsetx, offsety)
-
-        if (id === gMeme.selectedLine) gCtx.strokeRect(offsetx - padding, offsety - padding, 120, 120)
-
     })
+renderTextBoxRect()
+
 }
 
 

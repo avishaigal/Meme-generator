@@ -95,3 +95,23 @@ function switchLine() {
 
     elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
 }
+
+
+function renderTextBoxRect() {
+    let textBox = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt);
+    let { width, fontBoundingBoxAscent } = textBox
+
+    let currLine = gMeme.lines[gMeme.selectedLineIdx]
+    let { offsetx, offsety } = currLine
+
+    var padding = 10
+    var rectXStart = offsetx - width / 1.7
+    // var rectXStart = offsetx - width
+    var rectYStart = offsety - (fontBoundingBoxAscent * 1.5)
+    var rectXEnd = width + (padding * 2)
+    var rectYEnd = fontBoundingBoxAscent + (padding * 2.5)
+
+    console.log('x start end ', rectXStart, rectXEnd);
+    console.log('y start end ', rectYStart, rectYEnd);
+    gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
+}

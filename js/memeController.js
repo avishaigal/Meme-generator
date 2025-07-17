@@ -43,7 +43,7 @@ function renderText() {
         gCtx.fillText(txt, offsetx, offsety)
         gCtx.strokeText(txt, offsetx, offsety)
 
-        // if (id === selectedLine) gCtx.strokeRect(offsetx - padding, offsety - padding, 120, 120)
+        if (id === gMeme.selectedLine) gCtx.strokeRect(offsetx - padding, offsety - padding, 120, 120)
 
     })
 }

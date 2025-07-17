@@ -23,55 +23,14 @@ function renderMeme() {
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderText()
+
     }
+    getLinesSize()
 }
 
 
-// function renderText() {
-//     setLineTxt()
-//     let textBox = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt);
-//     let { width, fontBoundingBoxAscent } = textBox
-
-//     // console.log(textBox);
-//     // console.log(width);
-//     // console.log(actualBoundingBoxAscent);
-//     console.log(gMeme.selectedLineIdx);
-
-
-//     gMeme.lines.forEach(idx => {
-//         const { id, txt, size, color, offsetx, offsety } = idx
-//         console.log('idx', idx);
-
-//         var padding = 10
-
-//         gCtx.lineWidth = 1
-//         gCtx.strokeStyle = 'black'
-//         gCtx.fillStyle = color
-//         gCtx.font = size + 'px fantasy'
-//         gCtx.textAlign = 'center'
-//         gCtx.textBaseline = 'middle'
-//         gCtx.fillText(txt, offsetx, offsety)
-//         gCtx.strokeText(txt, offsetx, offsety)
-
-//         var rectXStart = offsetx - width
-//         var rectYStart = offsety - (fontBoundingBoxAscent * 2)
-//         var rectXEnd = width + (padding * 6)
-//         var rectYEnd = fontBoundingBoxAscent + (padding * 2.5)
-//         console.log('x start end ', rectXStart, rectXEnd);
-//         console.log('y start end ', rectYStart, rectYEnd);
-
-//         // if (id === gMeme.selectedLineIdx) gCtx.strokeRect((offsetx), (offsety), (offsetx + width), (offsety - fontBoundingBoxAscent))   
-//         if (id === gMeme.selectedLineIdx) gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
-//         gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
-//     })
-// }
-
 function renderText() {
     setLineTxt()
-    
-
-    console.log(gMeme.selectedLineIdx);
-
 
     gMeme.lines.forEach(idx => {
         const { id, txt, size, color, offsetx, offsety } = idx
@@ -85,8 +44,7 @@ function renderText() {
         gCtx.fillText(txt, offsetx, offsety)
         gCtx.strokeText(txt, offsetx, offsety)
     })
-renderTextBoxRect()
-
+    renderTextBoxRect()
 }
 
 
@@ -110,12 +68,14 @@ function onSetColor(color) {
 
 function onChangeTextSize(sign) {
     gCtx.font = changeTextSize(sign)
+    getLinesSize()
     renderMeme()
 }
 
 
 function onAddLine() {
     addLine()
+    getLinesSize()
     renderMeme()
 }
 
@@ -124,3 +84,12 @@ function onSwitchLine() {
     switchLine()
     renderMeme()
 }
+
+
+function renderTextBoxRect() {
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+    const { lineXStart, lineYStart, lineXEnd, lineYEnd } = currLine
+
+    gCtx.strokeRect(lineXStart, lineYStart, lineXEnd, lineYEnd)
+}
+

@@ -58,11 +58,11 @@ function setColor(color) {
 
 
 function changeTextSize(sign) {
-    var textSize = gMeme.lines[0].size
+    var textSize = gMeme.lines[gMeme.selectedLineIdx].size
 
     sign === '+' ? textSize++ : textSize--
-    gMeme.lines[0].size = textSize
-    renderText(gMeme.lines[0])
+    gMeme.lines[gMeme.selectedLineIdx].size = textSize
+    renderText(gMeme.lines[gMeme.selectedLineIdx])
     return textSize
 }
 
@@ -82,7 +82,6 @@ function addLine() {
         offsety: (130 + textOffset),
     }
     gMeme.lines.push(newLine)
-    console.log(gMeme.lines);
     gTextOffset = gTextOffset + 15
 }
 
@@ -97,21 +96,22 @@ function switchLine() {
 }
 
 
-function renderTextBoxRect() {
-    let textBox = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt);
-    let { width, fontBoundingBoxAscent } = textBox
+function getLinesSize() {
 
-    let currLine = gMeme.lines[gMeme.selectedLineIdx]
-    let { offsetx, offsety } = currLine
+    gMeme.lines.forEach(idx => {
+        let textBox = gCtx.measureText(idx.txt);
+        let { width, fontBoundingBoxAscent } = textBox
 
-    var padding = 10
-    var rectXStart = offsetx - width / 1.7
-    // var rectXStart = offsetx - width
-    var rectYStart = offsety - (fontBoundingBoxAscent * 1.5)
-    var rectXEnd = width + (padding * 2)
-    var rectYEnd = fontBoundingBoxAscent + (padding * 2.5)
+        let currLine = gMeme.lines[gMeme.selectedLineIdx]
+        let { offsetx, offsety } = currLine
 
-    console.log('x start end ', rectXStart, rectXEnd);
-    console.log('y start end ', rectYStart, rectYEnd);
-    gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
+        var padding = 10
+
+        idx.lineXStart = offsetx - width
+        idx.lineYStart = offsety - (fontBoundingBoxAscent * 1.5)
+        idx.lineXEnd = (width + (padding * 5))
+        idx.lineYEnd = fontBoundingBoxAscent + (padding * 2.5)
+    })
 }
+
+

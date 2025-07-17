@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+}
+
+.main-header {
+    background-color: orange;
+    border-radius: 7px;
+    font-family: fantasy;
+    margin-bottom: 1rem;
+    padding: 10px;
+
+}
+
+.main-header h1 {
+    text-align: center;
+    padding-block-start: 10px;
+    color: white;
+    text-shadow: 2px 2px salmon;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+img {
+    margin: 0.2em;
+}
+
+.canvas-container {
+    place-self: center;
+    margin-block-end: 1rem;
+}
+
+canvas {
+    border: 1px solid salmon;
+}
+
+.edit-lines {
+    border: 1px solid salmon;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+}
+
+.gallery-container {
+    display: grid;
+    background-color: lightblue;
+}
+
+.hide {
+    display: none;
+}
+
+button {
+    border-radius: 5px;
+    border: 2px outset salmon;
+    background-color: rgb(226, 121, 1);
+}
+
+button:hover {
+    background-color: rgb(160, 85, 0);
+}

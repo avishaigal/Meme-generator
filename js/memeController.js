@@ -51,6 +51,13 @@ function renderText() {
 function onShowGallery() {
     document.querySelector('.gallery').classList.remove('hide')
     document.querySelector('.canvas-container').classList.add('hide')
+    document.querySelector('.edit-lines').classList.add('hide')
+}
+
+function onShowMeme() {
+    document.querySelector('.canvas-container').classList.remove('hide')
+    document.querySelector('.edit-lines').classList.remove('hide')
+    document.querySelector('.gallery').classList.add('hide')
 }
 
 

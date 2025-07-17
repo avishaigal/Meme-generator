@@ -5,21 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body onload="onInit()">
     <header class="main-header">
         <h1>Meme Generator</h1>
         <div class="nav-bar">
-            <button class="btn-show-gallery" onclick="onShowGallery()">Open Gallery</button>
+            <button class="btn-show-gallery" onclick="onShowGallery()">Gallery</button>
+            <button class="btn-show-meme" onclick="onShowMeme()">Memes</button>
             <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
-            <label for="favcolor"></label>
-            <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
-            <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">+</button>
-            <button class="btn-decrease-text-size" onclick="onChangeTextSize('-')">-</button>
-            <button class="add-line" onclick="onAddLine()">Add Line</button>
-            <button class="switch-line" onclick="onSwitchLine()">Switch Line</button>
         </div>
     </header>
 
@@ -29,9 +24,20 @@
     <section class="editor">
         <div class="canvas-container">
             <canvas width="300" height="300"></canvas>
+        </div>
+        <div class="edit-lines">
+<h2>Edit Text Lines</h2>
             <input class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
+            <label for="favcolor"></label>
+            <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
+            <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">+</button>
+            <button class="btn-decrease-text-size" onclick="onChangeTextSize('-')">-</button>
+            <button class="add-line" onclick="onAddLine()">Add Line</button>
+            <button class="switch-line" onclick="onSwitchLine()">Switch Line</button>
         </div>
     </section>
+
+
 
     <script src="js/utilService.js"></script>
     <script src="js/memeService.js"></script>

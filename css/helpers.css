@@ -1,0 +1,7 @@
+.hide {
+    display: none;
+}
+
+.hide-grid {
+    grid-template-rows: 0;
+}

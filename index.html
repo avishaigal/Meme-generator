@@ -18,16 +18,13 @@
         </div>
     </header>
 
-    <section class="gallery-container">
-        <div class="gallery hide"></div>
-    </section>
-    <section class="editor">
+    <section class="editor hide">
         <div class="canvas-container">
-            <canvas width="300" height="300"></canvas>
+            <canvas width="300" height="300" onclick="isLineSelected(event)"></canvas>
         </div>
         <div class="edit-lines">
-<h2>Edit Text Lines</h2>
-            <input class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
+            <label for="canvas-text">Enter Text</label>
+            <input name="canvas-text" class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
             <label for="favcolor"></label>
             <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
             <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">+</button>
@@ -35,6 +32,9 @@
             <button class="add-line" onclick="onAddLine()">Add Line</button>
             <button class="switch-line" onclick="onSwitchLine()">Switch Line</button>
         </div>
+    </section>
+    <section class="gallery-container">
+        <div class="gallery"></div>
     </section>
 
 

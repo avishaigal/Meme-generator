@@ -1,2 +1,4 @@
-@import url("styles.css");
+@import url("vars.css");
+@import url("helpers.css");
 @import url("main.css");
+@import url("mq.css");

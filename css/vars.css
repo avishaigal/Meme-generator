@@ -1,0 +1,13 @@
+:root {
+    /* color palette */
+    --clrPrimary: #ffd9aa;
+
+    --clrSecondary: #3fa7aa;
+    --clrSecondary-1: #5f73b2;
+    --clrSecondary-2: #60346f;
+
+    /* screen size */
+    --l: 1060px;
+    --m: 760px;
+    --s: 380px;
+}

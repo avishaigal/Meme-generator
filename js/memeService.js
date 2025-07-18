@@ -82,8 +82,8 @@ function changeTextSize(sign) {
 
 
 function addLine() {
-    const linesCount = gMeme.lines.length + 1
-    const linesId = gMeme.lines.length + 1
+    const linesCount = gMeme.lines.length++
+    const linesId = gMeme.lines.length++
 
     var textOffset = gTextOffset
 
@@ -121,21 +121,21 @@ function setLineSize() {
         let { offsetx, offsety } = currLine
 
         var padding = 5
-        // idx.size = {
-        //     rectXStart: (offsetx - (width / 2) - padding),
-        //     rectYStart: offsety - fontBoundingBoxAscent * 1.5,
-        //     rectXEnd: width + padding,
-        //     rectYEnd: fontBoundingBoxAscent + (padding * 5),
-        // }
-        
         
         idx.rectXStart = (offsetx - (width / 2) - padding)
         idx.rectYStart = offsety - fontBoundingBoxAscent * 1.5
         idx.rectXEnd = width + padding
         idx.rectYEnd = fontBoundingBoxAscent + (padding * 5)
+        console.log(idx);
+        
     })
     renderTextBoxRect()
-    // console.log(gMeme);
 }
 
 
+function deleteLine() {
+    if (!gMeme.lines) return
+
+    gMeme.lines.splice(gMeme.lines[gMeme.selectedLineIdx], 1)
+    gMeme.selectedLineIdx = 0
+}

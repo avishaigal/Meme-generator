@@ -30,7 +30,7 @@ function renderMeme() {
 
 
 function renderText() {
-
+    
     gMeme.lines.forEach(idx => {
         const { id, txt, size, color, offsetx, offsety } = idx
 
@@ -42,12 +42,9 @@ function renderText() {
         gCtx.textBaseline = 'middle'
         gCtx.fillText(txt, offsetx, offsety)
         gCtx.strokeText(txt, offsetx, offsety)
-
-        setLineTxt()
-        setLineSize()
-        // renderTextBoxRect()
     })
-
+    setLineTxt()
+    setLineSize()
 }
 
 
@@ -130,4 +127,16 @@ function isLineSelected(ev) {
             gMeme.selectedLineIdx = idx.id
         }
     })
+}
+
+
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+}
+
+
+function onChangeFont(value) {
+    console.log(value);
+    
 }

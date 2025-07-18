@@ -78,8 +78,6 @@ function changeTextSize(sign) {
 
     sign === '+' ? textSize++ : textSize--
     gMeme.lines[gMeme.selectedLineIdx].size = textSize
-    renderText(gMeme.lines[gMeme.selectedLineIdx])
-    return textSize
 }
 
 
@@ -108,26 +106,36 @@ function switchLine() {
     if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx++
 
+    
     elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
 
-function getLinesSize() {
+function setLineSize() {
 
     gMeme.lines.forEach(idx => {
-        let textBox = gCtx.measureText(idx.txt);
+        let textBox = gCtx.measureText(idx);
         let { width, fontBoundingBoxAscent } = textBox
 
         let currLine = gMeme.lines[gMeme.selectedLineIdx]
         let { offsetx, offsety } = currLine
 
-        var padding = 10
-
-        idx.lineXStart = offsetx - width
-        idx.lineYStart = offsety - (fontBoundingBoxAscent * 1.5)
-        idx.lineXEnd = (width + (padding * 5))
-        idx.lineYEnd = fontBoundingBoxAscent + (padding * 2.5)
+        var padding = 5
+        // idx.size = {
+        //     rectXStart: (offsetx - (width / 2) - padding),
+        //     rectYStart: offsety - fontBoundingBoxAscent * 1.5,
+        //     rectXEnd: width + padding,
+        //     rectYEnd: fontBoundingBoxAscent + (padding * 5),
+        // }
+        
+        
+        idx.rectXStart = (offsetx - (width / 2) - padding)
+        idx.rectYStart = offsety - fontBoundingBoxAscent * 1.5
+        idx.rectXEnd = width + padding
+        idx.rectYEnd = fontBoundingBoxAscent + (padding * 5)
     })
+    renderTextBoxRect()
+    // console.log(gMeme);
 }
 
 

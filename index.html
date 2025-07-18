@@ -22,16 +22,35 @@
         <div class="canvas-container">
             <canvas width="300" height="300" onclick="isLineSelected(event)"></canvas>
         </div>
-        <div class="edit-lines">
-            <label for="canvas-text">Enter Text</label>
-            <input name="canvas-text" class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
-            <label for="favcolor"></label>
-            <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
-            <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">+</button>
-            <button class="btn-decrease-text-size" onclick="onChangeTextSize('-')">-</button>
-            <button class="add-line" onclick="onAddLine()">Add Line</button>
+
+        <input name="canvas-text" class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
+        <div class="change-lines">
             <button class="switch-line" onclick="onSwitchLine()">Switch Line</button>
+            <button class="add-line" onclick="onAddLine()">Add Line</button>
+            <button class="btn-delete-line" onclick="onDeleteLine()">Delete Line</button>
         </div>
+
+        <div class="edit-lines">
+            <div class="edit-line1">
+                <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">A+</button>
+                <button class="btn-decrease-text-size" onclick="onChangeTextSize('-')">A-</button>
+                <button class="btn-direction-ltr" onclick="">LTR</button>
+                <button class="btn-direction-center" onclick="">Center</button>
+                <button class="btn-direction-rtl" onclick="">RTL</button>
+            </div>
+
+            <div class="edit-line2">
+                <select name="font-family" id="font-family" onchange="onChangeFont(value)">
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Segoe UI">Segoe UI</option>
+                    <option value="Fantasy">Fantasy</option>
+                </select>
+                <label for="favcolor"></label>
+                <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
+            </div>
+        </div>
+
     </section>
     <section class="gallery-container">
         <div class="gallery"></div>

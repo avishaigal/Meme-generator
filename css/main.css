@@ -28,21 +28,6 @@ body {
     justify-content: space-evenly;
 }
 
-.canvas-container {
-    place-self: center;
-    margin-block-end: 1rem;
-}
-
-canvas {
-    border: 1px solid salmon;
-}
-
-.edit-lines {
-    border: 1px solid salmon;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-}
-
 .gallery-img {
     justify-self: center;
     border-radius: 5px;
@@ -66,7 +51,7 @@ canvas {
     justify-self: center;
     width: 100%;
     height: 100%;
-    background-color: var(--clrSecondary-2);
+    background-color: var(--clrSecondary-1);
     border-radius: 5px;  
 }
 
@@ -79,3 +64,4 @@ button {
 button:hover {
     background-color: var(--clrSecondary-1);
 }
+

@@ -14,7 +14,6 @@
         <div class="nav-bar">
             <button class="btn-show-gallery" onclick="onShowGallery()">Gallery</button>
             <button class="btn-show-meme" onclick="onShowMeme()">Memes</button>
-            <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
         </div>
     </header>
 
@@ -34,9 +33,9 @@
             <div class="edit-line1">
                 <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">A+</button>
                 <button class="btn-decrease-text-size" onclick="onChangeTextSize('-')">A-</button>
-                <button class="btn-direction-ltr" onclick="">LTR</button>
-                <button class="btn-direction-center" onclick="">Center</button>
-                <button class="btn-direction-rtl" onclick="">RTL</button>
+                <button class="btn-direction-ltr" onclick="onChangeFontDirection('left')">LTR</button>
+                <button class="btn-direction-center" onclick="onChangeFontDirection('center')">Center</button>
+                <button class="btn-direction-rtl" onclick="onChangeFontDirection('right')">RTL</button>
             </div>
 
             <div class="edit-line2">
@@ -51,7 +50,11 @@
             </div>
         </div>
 
+        <div class="share-download-div">
+            <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
+        </div>
     </section>
+
     <section class="gallery-container">
         <div class="gallery"></div>
     </section>

@@ -8,10 +8,6 @@ justify-items: center;
     margin-block-end: 1rem;
 }
 
-/* canvas {
-    border: 1px solid salmon;
-    } */
-
 .canvas-text {
     display: block;
     margin: 1rem auto;

@@ -25,8 +25,8 @@ var gMeme = {
     selectedImgId: 1,
     lines: [
         {
-            id: 1,
-            txt: 'Enter Text 1',
+            // id: 1,
+            txt: 'Enter Text',
             size: 20,
             color: 'black',
             offsetx: 100,
@@ -77,12 +77,12 @@ function changeTextSize(sign) {
 
 
 function addLine() {
-    const lineId = gMeme.lines.length + 1
+    // const lineId = gMeme.lines.length + 1
     const textOffset = gTextOffset
 
     const newLine = {
-        id: lineId,
-        txt: `Enter Text ${lineId}`,
+        // id: lineId,
+        txt: 'Enter Text',
         size: 20,
         color: 'black',
         offsetx: 100,
@@ -128,12 +128,20 @@ function deleteLine() {
         return
     }
     gMeme.lines.splice(gSelectedLine, 1)
-    
+
     if (gSelectedLine > 0) {
-        elInput.value = gMeme.lines[(gSelectedLine -1)].txt
         gSelectedLine--
+        elInput.value = gMeme.lines[gSelectedLine].txt
     } else {
         gSelectedLine = 0
         gTextInput = ''
     }
+}
+
+
+function moveElement(direction) {
+    const currLine = gMeme.lines[gSelectedLine]
+
+    if (direction === 'up') currLine.offsety -= 10
+    if (direction === 'down') currLine.offsety += 10
 }

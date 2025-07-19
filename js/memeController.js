@@ -96,7 +96,7 @@ function drawTextBoxRect() {
     if (gMeme.lines.length === 0) return
     const currLine = gMeme.lines[gSelectedLine]
     const { rectXStart, rectYStart, rectXEnd, rectYEnd } = currLine
-    console.log(rectXStart, rectYStart, rectXEnd, rectYEnd);
+    // console.log(rectXStart, rectYStart, rectXEnd, rectYEnd);
 
     gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
 }
@@ -111,19 +111,30 @@ function onDeleteLine() {
 function onChangeFont(value) {
     const currLine = gMeme.lines[gSelectedLine]
     currLine.font = value
+    console.log(currLine);
+
     renderMeme()
 }
 
 
-function onChangeFontDirection(value) {
-    // const currLine = gMeme.lines[gSelectedLine]
+function onClickElement(ev) {
+    const elInput = document.querySelector('.canvas-text')
+    const { offsetX, offsetY } = ev
 
-    // if (value === 'center') {
-    //     currLine.textDir = 'center'
-    // } else if (value === 'right') {
-    //     currLine.textDir = 'right'
-    // } else {
-    //     currLine.textDir = 'left'
-    // }
-    // renderMeme()
+    gMeme.lines.find(idx => {
+
+        if (offsetX >= idx.offsetx - gLinePadding && offsetX <= idx.offsetx + idx.rectXEnd
+            && offsetY >= idx.offsety - gLinePadding && offsetY <= idx.offsety + idx.rectYEnd - gLinePadding) {
+
+            gSelectedLine = gMeme.lines.indexOf(idx)
+            elInput.value = gMeme.lines[gSelectedLine].txt
+            renderMeme()
+        }
+    })
+}
+
+
+function onMoveElement(direction) {
+    moveElement(direction)
+    renderMeme()
 }

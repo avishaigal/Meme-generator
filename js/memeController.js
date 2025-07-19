@@ -2,12 +2,13 @@
 
 var gElCanvas
 var gCtx
+var gPrevPos
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-
     document.querySelector('.canvas-text').value = gMeme.lines[0].txt
+    
     renderMeme()
 }
 
@@ -129,16 +130,71 @@ function onClickElement(ev) {
 
         if (offsetX >= idx.offsetx - gLinePadding && offsetX <= idx.offsetx + idx.rectXEnd
             && offsetY >= idx.offsety - gLinePadding && offsetY <= idx.offsety + idx.rectYEnd - gLinePadding) {
+console.log('hi');
 
             gSelectedLine = gMeme.lines.indexOf(idx)
             elInput.value = gMeme.lines[gSelectedLine].txt
-            renderMeme()
         }
     })
+    return gMeme.lines[gSelectedLine]
 }
 
 
 function onMoveElement(direction) {
-    moveElement(direction)
+    moveElementUpDown(direction)
     renderMeme()
+}
+
+
+function onDown(ev) {
+    const pos = getEvPos(ev)
+
+    if (!onClickElement(ev)) return
+    setElementDrag(true)
+
+    gPrevPos = pos
+    document.body.style.cursor = 'grabbing'
+}
+
+
+function onMove(ev) {
+    const { isDrag } = onClickElement(ev)
+    if (!isDrag) return
+
+    const pos = getEvPos(ev)
+
+    const dx = pos.x - gPrevPos.x
+    const dy = pos.y - gPrevPos.y
+    moveElement(dx, dy)
+
+    gPrevPos = pos
+    renderMeme()
+}
+
+
+function onUp() {
+    setElementDrag(false)
+    document.body.style.cursor = 'grab'
+}
+
+
+function getEvPos(ev) {
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+
+    if (TOUCH_EVS.includes(ev.type)) {
+        ev.preventDefault()
+
+        ev = ev.changedTouches[0]
+
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
 }

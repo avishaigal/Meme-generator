@@ -19,50 +19,50 @@
 
     <section class="editor hide">
         <div class="canvas-container">
-            <canvas width="300" height="300" 
-            onclick="onClickElement(event)">
+            <canvas width="300" height="300" onmousedown="onDown(event)" ontouchstart="onDown(event)" onmouseup="onUp()"
+                ontouchend="onUp()" onmousemove="onMove(event)" ontouchmove="onMove(event)">
             </canvas>
         </div>
 
-        <input name="canvas-text" class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
-        <div class="change-lines">
-            <button class="switch-line" onclick="onSwitchLine()">Switch Line</button>
-            <button class="add-line" onclick="onAddLine()">Add Line</button>
-            <button class="btn-delete-line" onclick="onDeleteLine()">Delete Line</button>
-        </div>
-
-        <div class="edit-lines">
-            <div class="edit-line1">
-                <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">A+</button>
-                <button class="btn-decrease-text-size" onclick="onChangeTextSize('-')">A-</button>
-                <button class="btn-move-up" onclick="onMoveElement('up')">△</button>
-                <button class="btn-move-down" onclick="onMoveElement('down')">▽</button>
+        <div class="inputs">
+            <input name="canvas-text" class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
+            <div class="change-lines">
+                <button class="switch-line" onclick="onSwitchLine()">Switch Line</button>
+                <button class="add-line" onclick="onAddLine()">Add Line</button>
+                <button class="btn-delete-line" onclick="onDeleteLine()">Delete Line</button>
             </div>
 
-            <div class="edit-line2">
-                <select name="font-family" id="font-family" onchange="onChangeFont(value)">
-                    <option value="Arial">Arial</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                    <option value="Segoe UI">Segoe UI</option>
-                    <option value="Fantasy">Fantasy</option>
-                </select>
-                <label for="favcolor"></label>
-                <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
-                <label for="stroke-color"></label>
-                <input type="color" id="stroke-color" name="stroke-color" oninput="onSetStroke(value)">
+            <div class="edit-lines">
+                <div class="edit-line1">
+                    <button class="btn-increase-text-size" onclick="onChangeTextSize('+')">A+</button>
+                    <button class="btn-decrease-text-size" onclick="onChangeTextSize('-')">A-</button>
+                    <button class="btn-move-up" onclick="onMoveElement('up')">△</button>
+                    <button class="btn-move-down" onclick="onMoveElement('down')">▽</button>
+                </div>
+
+                <div class="edit-line2">
+                    <select name="font-family" id="font-family" onchange="onChangeFont(value)">
+                        <option value="Arial">Arial</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Segoe UI">Segoe UI</option>
+                        <option value="Fantasy">Fantasy</option>
+                    </select>
+                    <label for="favcolor"></label>
+                    <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
+                    <label for="stroke-color"></label>
+                    <input type="color" id="stroke-color" name="stroke-color" oninput="onSetStroke(value)">
+                </div>
             </div>
         </div>
-
         <div class="share-download-div">
             <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
         </div>
+
     </section>
 
     <section class="gallery-container">
         <div class="gallery"></div>
     </section>
-
-
 
     <script src="js/utilService.js"></script>
     <script src="js/memeService.js"></script>

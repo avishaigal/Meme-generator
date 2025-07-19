@@ -6,11 +6,14 @@
         grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr);
     }
 
-    /* .gallery-img {
-        width: 90%;
-        aspect-ratio: 1;
-    } */
+.editor {
+    display: grid;
 }
+
+}
+
+
+/* EDITOR */
 
 
 /* GALLERY  */
@@ -28,8 +31,20 @@
 
 /* MEDIUM */
 
+@media (min-width: 620px ) {
+
+    .editor {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .share-download-div {
+        grid-column: 1 / -1;
+    }
+}
+
 @media (min-width: 860px) {
-     .gallery {
+
+    .gallery {
         grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr);
     }
 }
@@ -38,12 +53,8 @@
 /* LARGE */
 
 @media (min-width: 860px) {
-     .gallery {
+
+    .gallery {
         grid-auto-flow: row;
     }
-
-    /* .gallery-img {
-        width: 200px;
-        aspect-ratio: 1;
-    } */
 }

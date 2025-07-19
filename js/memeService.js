@@ -25,12 +25,12 @@ var gMeme = {
     selectedImgId: 1,
     lines: [
         {
-            // id: 1,
             txt: 'Enter Text',
             size: 20,
             color: 'black',
             offsetx: 100,
             offsety: 50,
+            isDrag: false,
         },
     ]
 }
@@ -81,16 +81,15 @@ function changeTextSize(sign) {
 
 
 function addLine() {
-    // const lineId = gMeme.lines.length + 1
     const textOffset = gTextOffset
 
     const newLine = {
-        // id: lineId,
         txt: 'Enter Text',
         size: 20,
         color: 'black',
         offsetx: 100,
         offsety: (50 + textOffset),
+        isDrag: false,
     }
     if (gMeme.lines.length === 0) newLine.offsety = 50
 
@@ -143,7 +142,7 @@ function deleteLine() {
 }
 
 
-function moveElement(direction) {
+function moveElementUpDown(direction) {
     const currLine = gMeme.lines[gSelectedLine]
 
     if (direction === 'up') currLine.offsety -= 10
@@ -151,3 +150,18 @@ function moveElement(direction) {
 }
 
 
+function setElementDrag(isDrag) {
+    gMeme.lines[gSelectedLine].isDrag = isDrag
+}
+
+
+function moveElement(dx, dy) {
+    gMeme.lines[gSelectedLine].offsetx += dx
+    gMeme.lines[gSelectedLine].offsety += dy
+}
+
+
+function setElementPos(x, y) {
+    gMeme.lines[gSelectedLine].offsetx = x
+    gMeme.lines[gSelectedLine].offsety = y
+}

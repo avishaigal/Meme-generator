@@ -23,31 +23,24 @@ var gImgs = [
 
 var gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: 0,
     lines: [
         {
             id: 1,
             txt: 'Enter Text 1',
             size: 20,
             color: 'black',
-            offsetx: 150,
+            offsetx: 100,
             offsety: 50,
         },
-        {
-            id: 2,
-            txt: 'Enter Text 2',
-            size: 20,
-            color: 'black',
-            offsetx: 150,
-            offsety: 250,
-        }
     ]
 }
 
+var gSelectedLine = 0
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+
+const gLinePadding = 5
 var gTextOffset = 20
 var gTextInput = gMeme.lines[0].txt
-
 
 function getMeme() {
     return gMeme
@@ -56,9 +49,11 @@ function getMeme() {
 
 function setLineTxt() {
     var elInput = document.querySelector('.canvas-text')
-
-    gMeme.lines[gMeme.selectedLineIdx].txt = elInput.value
-    gTextInput = gMeme.lines[gMeme.selectedLineIdx].txt
+    if (gMeme.lines.length === 0) elInput.value = ''
+    else {
+        // gTextInput = gMeme.lines[gSelectedLine].txt
+        gMeme.lines[gSelectedLine].txt = elInput.value
+    }
 }
 
 
@@ -68,74 +63,77 @@ function setImg(imgIdx) {
 
 
 function setColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color = color
-    renderText(gMeme.lines[gMeme.selectedLineIdx])
+    gMeme.lines[gSelectedLine].color = color
+    renderText(gMeme.lines[gSelectedLine])
 }
 
 
 function changeTextSize(sign) {
-    var textSize = gMeme.lines[gMeme.selectedLineIdx].size
+    var textSize = gMeme.lines[gSelectedLine].size
 
     sign === '+' ? textSize++ : textSize--
-    gMeme.lines[gMeme.selectedLineIdx].size = textSize
+    gMeme.lines[gSelectedLine].size = textSize
 }
 
 
 function addLine() {
-    const linesCount = gMeme.lines.length++
-    const linesId = gMeme.lines.length++
-
-    var textOffset = gTextOffset
+    const lineId = gMeme.lines.length + 1
+    const textOffset = gTextOffset
 
     const newLine = {
-        id: linesId,
-        txt: `Enter Text ${linesCount}`,
+        id: lineId,
+        txt: `Enter Text ${lineId}`,
         size: 20,
         color: 'black',
-        offsetx: (130 + textOffset),
-        offsety: (130 + textOffset),
+        offsetx: 100,
+        offsety: (50 + textOffset),
     }
+    if (gMeme.lines.length === 0) newLine.offsety = 50
+
     gMeme.lines.push(newLine)
     gTextOffset = gTextOffset + 15
 }
 
 
 function switchLine() {
-    var elInput = document.querySelector('.canvas-text')
+    const elInput = document.querySelector('.canvas-text')
 
-    if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
-    else gMeme.selectedLineIdx++
+    if (gSelectedLine >= gMeme.lines.length - 1) gSelectedLine = 0
+    else gSelectedLine++
 
-    
-    elInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    elInput.value = gMeme.lines[gSelectedLine].txt
 }
 
 
-function setLineSize() {
+function getLineSize(lineObj) {
+    let currLine = lineObj
+    let { offsetx, offsety } = currLine
 
-    gMeme.lines.forEach(idx => {
-        let textBox = gCtx.measureText(idx);
-        let { width, fontBoundingBoxAscent } = textBox
+    let textBox = gCtx.measureText(currLine.txt)
+    let { width, fontBoundingBoxDescent } = textBox
 
-        let currLine = gMeme.lines[gMeme.selectedLineIdx]
-        let { offsetx, offsety } = currLine
+    const padding = gLinePadding
 
-        var padding = 5
-        
-        idx.rectXStart = (offsetx - (width / 2) - padding)
-        idx.rectYStart = offsety - fontBoundingBoxAscent * 1.5
-        idx.rectXEnd = width + padding
-        idx.rectYEnd = fontBoundingBoxAscent + (padding * 5)
-        console.log(idx);
-        
-    })
-    renderTextBoxRect()
+    currLine.rectXStart = offsetx - padding
+    currLine.rectYStart = offsety - padding
+    currLine.rectXEnd = width + padding * 2
+    currLine.rectYEnd = fontBoundingBoxDescent + padding * 2
 }
 
 
 function deleteLine() {
-    if (!gMeme.lines) return
-
-    gMeme.lines.splice(gMeme.lines[gMeme.selectedLineIdx], 1)
-    gMeme.selectedLineIdx = 0
+    var elInput = document.querySelector('.canvas-text')
+    if (gMeme.lines.length === 0) {
+        gTextOffset = 0
+        return
+    }
+    gMeme.lines.splice(gSelectedLine, 1)
+    
+    if (gSelectedLine > 0) {
+        elInput.value = gMeme.lines[(gSelectedLine -1)].txt
+        gSelectedLine--
+    } else {
+        gSelectedLine = 0
+        gTextInput = ''
+    }
 }

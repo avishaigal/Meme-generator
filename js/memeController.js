@@ -6,6 +6,7 @@ var gCtx
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
+
     document.querySelector('.canvas-text').value = gMeme.lines[0].txt
     renderMeme()
 }
@@ -24,45 +25,39 @@ function renderMeme() {
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderText()
+        drawTextBoxRect()
     }
     onShowMeme()
 }
 
 
 function renderText() {
-    
+    setLineTxt()
+
     gMeme.lines.forEach(idx => {
-        const { id, txt, size, color, offsetx, offsety } = idx
+        const { txt, size, color, offsetx, offsety, font } = idx
 
         gCtx.lineWidth = 1
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = color
-        gCtx.font = size + 'px arial'
-        gCtx.textAlign = 'center'
-        gCtx.textBaseline = 'middle'
+        !font ? gCtx.font = `${size}px arial` : gCtx.font = `${size}px ${font}`
+        gCtx.textBaseline = 'top'
         gCtx.fillText(txt, offsetx, offsety)
         gCtx.strokeText(txt, offsetx, offsety)
+        getLineSize(idx)
     })
-    setLineTxt()
-    setLineSize()
 }
 
 
 function onShowGallery() {
-    // document.querySelector('.gallery-container').classList.remove('hide')
-    // document.querySelector('.gallery').classList.remove('hide')
-    // document.querySelector('.gallery-img').classList.remove('hide')
     document.querySelector('.editor').classList.add('hide')
-    // document.querySelector('.edit-lines').classList.add('hide')
+    document.querySelector('.gallery-container').classList.remove('hide')
 }
+
 
 function onShowMeme() {
     document.querySelector('.editor').classList.remove('hide')
-    // document.querySelector('.edit-lines').classList.remove('hide')
-    // document.querySelector('.gallery-container').classList.add('hide')
-    // document.querySelector('.gallery').classList.add('hide')
-    // document.querySelector('.gallery-img').classList.add('hide')
-
+    document.querySelector('.gallery-container').classList.add('hide')
 }
 
 
@@ -86,6 +81,7 @@ function onChangeTextSize(sign) {
 
 function onAddLine() {
     addLine()
+    switchLine()
     renderMeme()
 }
 
@@ -96,37 +92,13 @@ function onSwitchLine() {
 }
 
 
-function renderTextBoxRect() {
-    const currLine = gMeme.lines[gMeme.selectedLineIdx]
+function drawTextBoxRect() {
+    if (gMeme.lines.length === 0) return
+    const currLine = gMeme.lines[gSelectedLine]
     const { rectXStart, rectYStart, rectXEnd, rectYEnd } = currLine
+    console.log(rectXStart, rectYStart, rectXEnd, rectYEnd);
+
     gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
-}
-
-
-function isLineSelected(ev) {
-
-    const currLoc = gMeme.lines.find(idx => {
-        console.log('click x', ev.offsetX);
-        console.log('click y', ev.offsetY);
-        // console.log(idx);
-        // console.log(gMeme.lines[gMeme.selectedLineIdx]);
-
-        // console.log('lineX start end ',idx.rectXStart,idx.rectXEnd);
-        // console.log('lineY start end ',idx.rectYStart,idx.rectYEnd);
-        console.log('lineX start end ', idx.rectXStart, idx.rectXEnd);
-        console.log('lineY start end ', idx.rectYStart, idx.rectYEnd);
-
-        // if (ev.offsetX >= idx.lineXStart && ev.offsetX <= idx.lineXEnd
-        //     && ev.offsetY <= idx.lineYStart && ev.offsetY >= idx.lineYEnd) {
-
-        if (ev.clientX >= idx.rectXStart && ev.clientX <= idx.rectXEnd
-            && ev.clientY <= idx.rectYStart && ev.clientY >= idx.rectYEnd
-        ) {
-
-            console.log('hi', idx);
-            gMeme.selectedLineIdx = idx.id
-        }
-    })
 }
 
 
@@ -137,6 +109,21 @@ function onDeleteLine() {
 
 
 function onChangeFont(value) {
-    console.log(value);
-    
+    const currLine = gMeme.lines[gSelectedLine]
+    currLine.font = value
+    renderMeme()
+}
+
+
+function onChangeFontDirection(value) {
+    // const currLine = gMeme.lines[gSelectedLine]
+
+    // if (value === 'center') {
+    //     currLine.textDir = 'center'
+    // } else if (value === 'right') {
+    //     currLine.textDir = 'right'
+    // } else {
+    //     currLine.textDir = 'left'
+    // }
+    // renderMeme()
 }

@@ -64,7 +64,11 @@ function setImg(imgIdx) {
 
 function setColor(color) {
     gMeme.lines[gSelectedLine].color = color
-    renderText(gMeme.lines[gSelectedLine])
+}
+
+
+function setStroke(color) {
+    gMeme.lines[gSelectedLine].stroke = color
 }
 
 
@@ -145,3 +149,5 @@ function moveElement(direction) {
     if (direction === 'up') currLine.offsety -= 10
     if (direction === 'down') currLine.offsety += 10
 }
+
+

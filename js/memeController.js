@@ -35,11 +35,12 @@ function renderText() {
     setLineTxt()
 
     gMeme.lines.forEach(idx => {
-        const { txt, size, color, offsetx, offsety, font } = idx
+        const { txt, size, color, stroke, offsetx, offsety, font } = idx
 
         gCtx.lineWidth = 1
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = color
+        gCtx.strokeStyle = stroke
         !font ? gCtx.font = `${size}px arial` : gCtx.font = `${size}px ${font}`
         gCtx.textBaseline = 'top'
         gCtx.fillText(txt, offsetx, offsety)
@@ -73,6 +74,12 @@ function onSetColor(color) {
 }
 
 
+function onSetStroke(color) {
+    setStroke(color)
+    renderMeme()
+}
+
+
 function onChangeTextSize(sign) {
     changeTextSize(sign)
     renderMeme()
@@ -96,7 +103,6 @@ function drawTextBoxRect() {
     if (gMeme.lines.length === 0) return
     const currLine = gMeme.lines[gSelectedLine]
     const { rectXStart, rectYStart, rectXEnd, rectYEnd } = currLine
-    // console.log(rectXStart, rectYStart, rectXEnd, rectYEnd);
 
     gCtx.strokeRect(rectXStart, rectYStart, rectXEnd, rectYEnd)
 }
@@ -111,8 +117,6 @@ function onDeleteLine() {
 function onChangeFont(value) {
     const currLine = gMeme.lines[gSelectedLine]
     currLine.font = value
-    console.log(currLine);
-
     renderMeme()
 }
 

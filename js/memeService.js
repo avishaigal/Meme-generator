@@ -42,6 +42,7 @@ const gLinePadding = 5
 var gTextOffset = 20
 var gTextInput = gMeme.lines[0].txt
 
+
 function getMeme() {
     return gMeme
 }

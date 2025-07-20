@@ -21,4 +21,5 @@ function onImgSelect(elImgIdx) {
 
     setImg(elImgIdx)
     renderMeme()
+    onShowMeme()
 }

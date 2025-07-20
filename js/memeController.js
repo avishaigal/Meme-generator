@@ -8,7 +8,7 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     document.querySelector('.canvas-text').value = gMeme.lines[0].txt
-    
+    onShowGallery()
     renderMeme()
 }
 
@@ -22,13 +22,10 @@ function renderMeme() {
 
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-
-    elImg.onload = () => {
-        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        renderText()
-        drawTextBoxRect()
-    }
-    onShowMeme()
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+    
+    renderText()
+    drawTextBoxRect()
 }
 
 
@@ -130,7 +127,6 @@ function onClickElement(ev) {
 
         if (offsetX >= idx.offsetx - gLinePadding && offsetX <= idx.offsetx + idx.rectXEnd
             && offsetY >= idx.offsety - gLinePadding && offsetY <= idx.offsety + idx.rectYEnd - gLinePadding) {
-console.log('hi');
 
             gSelectedLine = gMeme.lines.indexOf(idx)
             elInput.value = gMeme.lines[gSelectedLine].txt

@@ -1,13 +1,20 @@
 /* MOBILE */
 
 @media (max-width: 360px) {
-    
+
     .main-header {
-        min-width: 300px;
+        min-width: 260px;
     }
 
     .editor {
         display: grid;
+    }
+
+    footer {
+        left: 50%;
+        transform: translate(-50%);
+        width: 90vw;
+        font-size: 0.8rem;
     }
 }
 
@@ -15,6 +22,13 @@
 
     .gallery {
         grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr);
+    }
+
+    footer {
+        left: 50%;
+        transform: translate(-50%);
+        width: 90vw;
+        max-width: 1000px;
     }
 }
 
@@ -58,11 +72,6 @@
 
     .share-download-div {
         grid-column: 1 / -1;
-    }
-
-    .main-header {
-        width: 95vw;
-        min-width: 616px;
     }
 
     .canvas-container {

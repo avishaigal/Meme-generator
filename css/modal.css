@@ -1,0 +1,73 @@
+.modal {
+    position: fixed;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+
+    height: 250px;
+    width: 350px;
+    padding: 1.5625rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--clrPrimary-1);
+
+    background-color: var(--clrPrimary);
+    color: rgb(70, 50, 36);
+    font-family: opensans;
+    text-align: center;
+
+    opacity: 0;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    pointer-events: none;
+}
+
+.modal-about .about-h2 {
+    justify-self: center;
+}
+
+.modal-about p {
+    align-self: start;
+}
+
+.btns-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.dialog-close,
+.link-mail {
+    font-size: 1rem;
+    color: rgb(70, 50, 36);
+}
+
+.link-mail {
+    font-weight: bold;
+}
+
+.link-mail:hover {
+    background-color: #4d702f;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.backdrop-overlay {
+    background-color: #584844a8;
+    opacity: 1;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.modal.open-modal {
+    opacity: 1;
+    z-index: 30;
+    pointer-events: auto;
+}

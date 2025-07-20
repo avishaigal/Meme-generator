@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -14,7 +15,6 @@
         <div class="nav-bar">
             <button class="btn-show-gallery" onclick="onShowGallery()">Gallery</button>
             <button class="btn-show-meme" onclick="onShowMeme()">Memes</button>
-            <!-- <button class="btn-about" onclick="">About</button> -->
         </div>
     </header>
 
@@ -55,16 +55,26 @@
         <div class="share-download-div">
             <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download</a>
         </div>
-
     </section>
 
     <section class="gallery-container">
         <div class="gallery"></div>
     </section>
 
-    <!-- <footer class="footer">Created by Avishai Gal, July 2025</footer> -->
+    <footer class="footer">Created by <span class="my-name"><a class="footer-name" onclick="toggleModal()">Avishai
+                Gal</a></span>, July 2025
+    </footer>
 
-    <script src="js/utilService.js"></script>
+    <div class="modal about-modal" onclick="event.stopPropagation()">
+        <h2 class="about-h2">Hi there!</h2>
+        <p class="about-paragraph">My name is <span class="my-name">Avishai</span>. I currently study web development</p>
+        <div class="btns-modal">
+            <a href="mailto:avishai.gal@gmail.com" class="link-mail">Like my work? email me</a>
+            <button class="dialog-close" onclick="toggleModal()">Close</button>
+        </div>
+    </div>
+    <section class="backdrop" onclick="toggleModal()"></section>
+
     <script src="js/memeService.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>

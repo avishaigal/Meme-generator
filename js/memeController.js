@@ -23,9 +23,16 @@ function renderMeme() {
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
     gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-    
+
     renderText()
     drawTextBoxRect()
+}
+
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
 }
 
 
@@ -155,7 +162,7 @@ function onDown(ev) {
 function onMove(ev) {
     const { isDrag } = onClickElement(ev)
     if (!isDrag) return
-    
+
 
     const pos = getEvPos(ev)
 

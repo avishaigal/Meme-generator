@@ -1,10 +1,15 @@
 :root {
     /* color palette */
     --clrPrimary: #ffd9aa;
+    --clrPrimary-1: #fa8072;
 
-    --clrSecondary: #3fa7aa;
+    --clrSecondary: #ffffff;
+    --clrSecondary-1: #f7f6f6;
+
+    /* --clrSecondary: #3fa7aa;
     --clrSecondary-1: #5f73b2;
-    --clrSecondary-2: #60346f;
+    --clrSecondary-2: #60346f; */
+    
 
     /* screen size */
     --l: 1060px;

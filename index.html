@@ -24,7 +24,7 @@
                 ontouchend="onUp()" onmousemove="onMove(event)" ontouchmove="onMove(event)">
             </canvas>
         </div>
-        <div class="inputs">
+        <div class="meme-inputs">
             <input name="canvas-text" class="canvas-text" type="text" placeholder="Enter Text" oninput="renderMeme()" />
             <div class="change-lines">
                 <button class="btn-switch-line" onclick="onSwitchLine()">Switch Line</button>
@@ -45,8 +45,8 @@
                         <option value="Segoe UI">Segoe UI</option>
                         <option value="Fantasy">Fantasy</option>
                     </select>
-                    <label for="favcolor"></label>
-                    <input type="color" id="favcolor" name="favcolor" oninput="onSetColor(value)">
+                    <label for="font-color"></label>
+                    <input type="color" id="font-color" name="font-color" oninput="onSetColor(value)">
                     <label for="stroke-color"></label>
                     <input type="color" id="stroke-color" name="stroke-color" oninput="onSetStroke(value)">
                 </div>
@@ -61,6 +61,8 @@
     <section class="gallery-container">
         <div class="gallery"></div>
     </section>
+
+    <!-- <footer class="footer">Created by Avishai Gal, July 2025</footer> -->
 
     <script src="js/utilService.js"></script>
     <script src="js/memeService.js"></script>

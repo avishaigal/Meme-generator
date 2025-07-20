@@ -78,8 +78,14 @@ function onSetStroke(color) {
 }
 
 
-function onChangeTextSize(sign) {
-    changeTextSize(sign)
+function onSetFontSize(sign) {
+    setFontSize(sign)
+    renderMeme()
+}
+
+
+function onSetFontFamily(font) {
+    setFontFamily(font)
     renderMeme()
 }
 
@@ -108,13 +114,6 @@ function drawTextBoxRect() {
 
 function onDeleteLine() {
     deleteLine()
-    renderMeme()
-}
-
-
-function onChangeFont(value) {
-    const currLine = gMeme.lines[gSelectedLine]
-    currLine.font = value
     renderMeme()
 }
 

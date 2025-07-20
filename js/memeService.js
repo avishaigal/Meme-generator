@@ -73,11 +73,16 @@ function setStroke(color) {
 }
 
 
-function changeTextSize(sign) {
+function setFontSize(sign) {
     var textSize = gMeme.lines[gSelectedLine].size
 
     sign === '+' ? textSize++ : textSize--
     gMeme.lines[gSelectedLine].size = textSize
+}
+
+
+function setFontFamily(font) {
+    gMeme.lines[gSelectedLine].font = font
 }
 
 

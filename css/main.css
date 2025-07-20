@@ -11,7 +11,6 @@ body {
 
 .main-header {
     width: 90vw;
-    min-width: 300px;
     max-width: 1000px;
 
     border-radius: 0.5rem;
@@ -20,7 +19,6 @@ body {
 
     font-family: fantasy;
     background-color: var(--clrPrimary);
-
 }
 
 .main-header h1 {
@@ -41,41 +39,12 @@ body {
     font-size: 1.2rem;
 }
 
-.gallery-img {
-    border-radius: 0.3rem;
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    justify-self: center;
-    outline: 1px solid var(--clrPrimary);
-}
-
-
-.gallery-container {
-    display: grid;
-    justify-self: center;
-    width: 90vw;
-    max-width: 1000px;
-}
-
-.gallery {
-    display: grid;
-    justify-self: center;
-    width: 100%;
-    height: 100%;
-    gap: 0.5rem;
-    background-color: var(--clrSecondary-1);
-    border-radius: 0.3rem;
-}
-
 button {
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
     border: 0;
-
     background-color: var(--clrPrimary);
     color: var(--clrPrimary-1);
-    /* text-shadow: 1px 1px var(--clrPrimary-1); */
 
     transition: background-color 0.2s, color 0.2s;
     cursor: pointer;

@@ -14,11 +14,11 @@
     min-width: 300px;
     grid-template-columns: 1rem 1fr 1rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--clrPrimary);
+    background-color: var(--clrPrimary);
 }
 
 .meme-inputs>* {
-grid-column: 2;
+    grid-column: 2;
 }
 
 .canvas-text {
@@ -26,8 +26,9 @@ grid-column: 2;
     margin-block: 1rem;
     padding: 5px 10px;
     border-radius: 0.5rem;
-    border: 1px solid var(--clrPrimary-1);
-color: var(--clrPrimary-1);
+
+    border: 1px solid var(--clrSecondary-1);
+    color: var(--clrPrimary-1);
     cursor: text;
 }
 
@@ -49,8 +50,7 @@ color: var(--clrPrimary-1);
 }
 
 .edit-line1 {
-    display: flex;    
-
+    display: flex;
     margin-block-end: 1rem;
     justify-content: space-evenly;
     justify-self: center;
@@ -65,19 +65,21 @@ color: var(--clrPrimary-1);
 
 .meme-inputs button {
     padding: 10px;
+    border: 1px solid var(--clrSecondary-1);
 }
 
 #font-family {
     padding: 4px 10px;
     border-radius: 0.5rem;
-
-    border: 1px solid var(--clrPrimary-1);
+    border: 1px solid var(--clrSecondary-1);
+    color: var(--clrPrimary-1);
 }
 
+.canvas-text,
 #font-family:focus {
     border-style: inset;
-    /* outline-color: var(--clrPrimary) !important; */
-    outline-color: var(--clrPrimary-1);
+    outline-color: var(--clrSecondary-1);
+    color: var(--clrPrimary-1);
 }
 
 #font-color,
@@ -85,5 +87,6 @@ color: var(--clrPrimary-1);
     height: 1.7rem;
     width: 1.7rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--clrPrimary-1);
+    background-color: var(--clrPrimary);
+    border: none;
 }

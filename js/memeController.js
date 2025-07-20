@@ -8,6 +8,7 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     document.querySelector('.canvas-text').value = gMeme.lines[0].txt
+    renderGallery()
     onShowGallery()
     renderMeme()
 }

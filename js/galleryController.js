@@ -1,8 +1,5 @@
 'use strict'
 
-renderGallery()
-
-
 function renderGallery() {
     const elGallery = document.querySelector('.gallery')
     var strHTML = ''
@@ -12,7 +9,7 @@ function renderGallery() {
         return `<img src="${img.url}" alt="" id:"${count++}" class="gallery-img" onclick=onImgSelect(${count})>`
     })
 
-    elGallery.innerHTML = strHTML.join('')    
+    elGallery.innerHTML = strHTML.join('')
 }
 
 

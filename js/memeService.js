@@ -52,7 +52,6 @@ function setLineTxt() {
     var elInput = document.querySelector('.canvas-text')
     if (gMeme.lines.length === 0) elInput.value = ''
     else {
-        // gTextInput = gMeme.lines[gSelectedLine].txt
         gMeme.lines[gSelectedLine].txt = elInput.value
     }
 }
@@ -86,6 +85,22 @@ function setFontFamily(font) {
 }
 
 
+function getLineSize(lineObj) {
+    let currLine = lineObj
+    let { offsetx, offsety } = currLine
+
+    let textBox = gCtx.measureText(currLine.txt)
+    let { width, fontBoundingBoxDescent } = textBox
+
+    const padding = gLinePadding
+
+    currLine.rectXStart = offsetx - padding
+    currLine.rectYStart = offsety - padding
+    currLine.rectXEnd = width + padding * 2
+    currLine.rectYEnd = fontBoundingBoxDescent + padding * 2
+}
+
+
 function addLine() {
     const textOffset = gTextOffset
 
@@ -111,22 +126,6 @@ function switchLine() {
     else gSelectedLine++
 
     elInput.value = gMeme.lines[gSelectedLine].txt
-}
-
-
-function getLineSize(lineObj) {
-    let currLine = lineObj
-    let { offsetx, offsety } = currLine
-
-    let textBox = gCtx.measureText(currLine.txt)
-    let { width, fontBoundingBoxDescent } = textBox
-
-    const padding = gLinePadding
-
-    currLine.rectXStart = offsetx - padding
-    currLine.rectYStart = offsety - padding
-    currLine.rectXEnd = width + padding * 2
-    currLine.rectYEnd = fontBoundingBoxDescent + padding * 2
 }
 
 

@@ -17,7 +17,7 @@ body {
     border-radius: 0.5rem;
     padding: 0.7rem;
     margin: 1rem auto;
-    
+
     font-family: fantasy;
     background-color: var(--clrPrimary);
 
@@ -70,19 +70,24 @@ body {
 
 button {
     border-radius: 0.5rem;
-    /* padding: 5px 10px; */
+    padding: 0.5rem 1rem;
     border: 0;
-    background-color: var(--clrPrimary);
-    color: var(--clrSecondary-1);
-    text-shadow: 1px 1px var(--clrPrimary-1);
-    cursor: pointer;
-}
 
-input,
-select {
+    background-color: var(--clrPrimary);
+    color: var(--clrPrimary-1);
+    /* text-shadow: 1px 1px var(--clrPrimary-1); */
+
+    transition: background-color 0.2s, color 0.2s;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: var(--clrSecondary-1);
+    color: var(--clrPrimary);
+    background-color: var(--clrPrimary-1);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+input:not(.canvas-text),
+select {
+    cursor: pointer;
 }

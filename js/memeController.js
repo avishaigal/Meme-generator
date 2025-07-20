@@ -155,6 +155,7 @@ function onDown(ev) {
 function onMove(ev) {
     const { isDrag } = onClickElement(ev)
     if (!isDrag) return
+    
 
     const pos = getEvPos(ev)
 

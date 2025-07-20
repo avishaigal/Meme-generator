@@ -18,6 +18,36 @@
     }
 }
 
+@media (max-width: 420px) {
+    .modal {
+        height: 100vh;
+        width: 100vw;
+        inset: 0;
+        translate: 0;
+        padding: 1rem;
+    }
+
+    .about-h2 {
+        justify-self: center;
+        align-self: center;
+    }
+
+.btns-modal {
+    display: grid;
+    justify-self: center;
+    align-self: start;
+}
+
+.link-mail {
+    margin-block-end: 2rem;
+}
+
+.dialog-close {
+    justify-self: center;
+}
+    
+}
+
 @media (min-width: 360px) {
 
     .gallery {

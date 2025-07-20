@@ -201,3 +201,9 @@ function getEvPos(ev) {
     }
     return pos
 }
+
+
+function toggleModal() {
+    document.querySelector('.backdrop').classList.toggle('backdrop-overlay')
+    document.querySelector('.modal').classList.toggle('open-modal')
+}
